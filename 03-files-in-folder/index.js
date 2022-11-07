@@ -13,7 +13,7 @@ fs.readdir(path.join(__dirname,'secret-folder')
                ,(err,stats) => {
             if (err) console.error(err)
             else {
-                if(file.isDirectory() === false) stdout.write(file.name.replace('.', ' - ') + ' - ' + stats.size/8 + ' kb\n')
+                if(file.isDirectory() === false) stdout.write(file.name.replace('.', ' - ') + ' - ' + stats.size + ' b\n')
             }
         })
     })
