@@ -1,10 +1,13 @@
 const fs = require('fs');
 const path = require('path');
 
-
-fs.unlink(path.join(__dirname, 'project-dist','bundle.css'), (err) => {
-  if (err) console.error(err);
+fs.access(path.join(__dirname, 'project-dist','bundle.css'), fs.F_OK, (err) => {
+  if (err) return;
+  fs.unlink(path.join(__dirname, 'project-dist','bundle.css'), (err) => {
+    if (err) console.error(err);
+  });
 });
+
 
 fs.readdir(path.join(__dirname,'styles')
   ,{withFileTypes: true}
@@ -23,7 +26,8 @@ fs.readdir(path.join(__dirname,'styles')
         }
       }
     });
-  });
+  }
+);
 
 
 
