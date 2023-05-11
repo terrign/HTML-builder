@@ -6,9 +6,7 @@ const fp = require('fs/promises');
 (async function() {
   try {
     await fp.rm(path.join(__dirname, 'project-dist'), {recursive:true});
-  } catch (err){
-    if (err) console.log(err);
-  }
+  } catch {}
   await fp.mkdir(path.join(__dirname, 'project-dist'), {recursive:true})
     .then(() => {
       createHtml();
